@@ -6,6 +6,7 @@ const client = axios.create({
     baseURL: API_URL,
     headers: {
         'Content-Type': 'application/json',
+        'Bypass-Tunnel-Reminder': 'true', // Required for localtunnel
     },
 });
 
