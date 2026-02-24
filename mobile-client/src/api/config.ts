@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
-// Public HTTPS Tunnel for Vercel testing: https://whatsapp-fix-final-demo.loca.lt
-const TUNNEL_URL = 'https://whatsapp-fix-final-demo.loca.lt';
+// Public HTTPS Tunnel for Vercel testing: https://large-planets-trade.loca.lt
+const TUNNEL_URL = 'https://large-planets-trade.loca.lt';
 
 // Use 10.0.2.2 for Android emulator, localhost for others (iOS/Web)
 // Adjust this to your local machine IP if testing on physical device
