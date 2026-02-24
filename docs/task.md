@@ -61,7 +61,7 @@
 - [x] Initialize Git Repository and Push to GitHub
 
 ## Phase 9: Mobile Polish & Group Features
-- [ ] Implement Profile Editing Screen (Name, Status, Avatar)
-- [ ] Implement Group Creation UI
-- [ ] Implement Group Info / Member List Screen
-- [ ] Add Basic Call Logs Placeholder Logic
+- [x] Implement Profile Editing Screen (Name, Status, Avatar)
+- [x] Implement Group Creation UI
+- [x] Implement Group Info / Member List Screen
+- [x] Add Basic Call Logs Placeholder Logic

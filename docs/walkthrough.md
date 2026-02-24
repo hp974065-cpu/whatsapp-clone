@@ -13,6 +13,9 @@ The Android client is built using **Expo** and **NativeWind (Tailwind CSS)**. It
 - **Media Support**: Support for sending and viewing images.
 - **Auth Flow**: Phone number verification with persistent login.
 - **Advanced Features**: Real-time presence (online status), typing indicators, and user search for new chats.
+- **Group Management**: Full multi-select group creation and info/member management.
+- **Profile Customization**: Update display name, status text, and avatar.
+- **Complete UI**: Functional (placeholder) Status and Calls tabs for a complete user experience.
 - **WhatsApp UI**: A premium dark-mode theme built with **NativeWind**.
 
 ## 🛠️ How to Run
@@ -31,6 +34,7 @@ npx expo start
 - **Android Emulator**: Press `a` in the terminal once expo starts.
 - **Physical Device**: Download the **Expo Go** app and scan the QR code.
   - *Note: You may need to update `src/api/config.ts` with your local machine's IP (e.g., `192.168.x.x`) to test on a physical device.*
+- **GitHub**: [Link to Repository](https://github.com/hp974065-cpu/whatsapp-clone.git)
 
 ### 🛠️ Developer Credentials
 - **Phone**: `+911111111111`
@@ -42,7 +46,9 @@ npx expo start
 
 ## ✅ Verification Check
 - [x] Backend runs without Docker.
-- [x] Web Client (http://localhost:3000) works.
-- [x] Mobile Client project is scaffolded and configured.
-- [x] Real-time messaging between clients is enabled.
-- [x] Media uploads and display are functional.
+- [x] Web Client works.
+- [x] Mobile Client project is fully functional.
+- [x] Real-time messaging and presence enabled.
+- [x] Group chat creation and management functional.
+- [x] Profile editing and media uploads verified.
+- [x] Code pushed to GitHub.
