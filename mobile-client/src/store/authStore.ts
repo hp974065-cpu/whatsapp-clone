@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import * as SecureStore from 'expo-secure-store';
+import { Platform } from 'react-native';
 
 export interface User {
     id: string;
@@ -20,6 +21,30 @@ interface AuthState {
     loadAuth: () => Promise<void>;
 }
 
+// Simple adapter for Web vs Native
+const storage = {
+    getItem: async (key: string) => {
+        if (Platform.OS === 'web') {
+            return localStorage.getItem(key);
+        }
+        return SecureStore.getItemAsync(key);
+    },
+    setItem: async (key: string, value: string) => {
+        if (Platform.OS === 'web') {
+            localStorage.setItem(key, value);
+            return;
+        }
+        return SecureStore.setItemAsync(key, value);
+    },
+    deleteItem: async (key: string) => {
+        if (Platform.OS === 'web') {
+            localStorage.removeItem(key);
+            return;
+        }
+        return SecureStore.deleteItemAsync(key);
+    }
+};
+
 export const useAuthStore = create<AuthState>((set) => ({
     accessToken: null,
     refreshToken: null,
@@ -29,9 +54,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     setAuth: async (accessToken, refreshToken, user) => {
         try {
             await Promise.all([
-                SecureStore.setItemAsync('accessToken', accessToken),
-                SecureStore.setItemAsync('refreshToken', refreshToken),
-                SecureStore.setItemAsync('user', JSON.stringify(user)),
+                storage.setItem('accessToken', accessToken),
+                storage.setItem('refreshToken', refreshToken),
+                storage.setItem('user', JSON.stringify(user)),
             ]);
             set({ accessToken, refreshToken, user, isLoading: false });
         } catch (error) {
@@ -41,7 +66,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     setUser: async (user) => {
         try {
-            await SecureStore.setItemAsync('user', JSON.stringify(user));
+            await storage.setItem('user', JSON.stringify(user));
             set({ user });
         } catch (error) {
             console.error('Failed to save user state:', error);
@@ -51,9 +76,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     clearAuth: async () => {
         try {
             await Promise.all([
-                SecureStore.deleteItemAsync('accessToken'),
-                SecureStore.deleteItemAsync('refreshToken'),
-                SecureStore.deleteItemAsync('user'),
+                storage.deleteItem('accessToken'),
+                storage.deleteItem('refreshToken'),
+                storage.deleteItem('user'),
             ]);
             set({ accessToken: null, refreshToken: null, user: null, isLoading: false });
         } catch (error) {
@@ -64,9 +89,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     loadAuth: async () => {
         try {
             const [accessToken, refreshToken, userStr] = await Promise.all([
-                SecureStore.getItemAsync('accessToken'),
-                SecureStore.getItemAsync('refreshToken'),
-                SecureStore.getItemAsync('user'),
+                storage.getItem('accessToken'),
+                storage.getItem('refreshToken'),
+                storage.getItem('user'),
             ]);
 
             set({
