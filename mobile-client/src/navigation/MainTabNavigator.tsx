@@ -2,15 +2,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ChatListScreen from '../screens/main/ChatListScreen';
 import SettingsScreen from '../screens/main/SettingsScreen';
-import { View, Text } from 'react-native';
+import StatusScreen from '../screens/main/StatusScreen';
+import CallsScreen from '../screens/main/CallsScreen';
+import { Text } from 'react-native';
 
 const Tab = createBottomTabNavigator();
-
-const Placeholder = ({ name }: { name: string }) => (
-    <View className="flex-1 bg-wa-bg justify-center items-center">
-        <Text className="text-wa-text">{name} Screen</Text>
-    </View>
-);
 
 export default function MainTabNavigator() {
     return (
@@ -30,12 +26,12 @@ export default function MainTabNavigator() {
             />
             <Tab.Screen
                 name="Status"
-                component={() => <Placeholder name="Status" />}
+                component={StatusScreen}
                 options={{ tabBarIcon: () => <Text>📡</Text> }}
             />
             <Tab.Screen
                 name="Calls"
-                component={() => <Placeholder name="Calls" />}
+                component={CallsScreen}
                 options={{ tabBarIcon: () => <Text>📞</Text> }}
             />
             <Tab.Screen
