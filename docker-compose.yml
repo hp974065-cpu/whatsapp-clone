@@ -1,0 +1,43 @@
+# ============================================
+# WhatsApp Clone — Docker Compose
+# ============================================
+# Starts PostgreSQL 16 + Redis 7 for local dev
+# ============================================
+
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: whatsapp_postgres
+    environment:
+      POSTGRES_DB: whatsapp_clone
+      POSTGRES_USER: chatuser
+      POSTGRES_PASSWORD: chatpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatuser -d whatsapp_clone"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: whatsapp_redis
+    command: redis-server --requirepass redispass
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "redispass", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+  redisdata:

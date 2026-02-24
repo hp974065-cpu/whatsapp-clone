@@ -1,0 +1,34 @@
+{
+    "name": "whatsapp-clone-backend",
+    "version": "1.0.0",
+    "description": "WhatsApp-like messaging system backend — Auth, Messaging, Media services",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "db:migrate": "node src/db/migrate.js",
+        "db:seed": "node src/db/seed.js",
+        "generate:keys": "node scripts/generate-keys.js"
+    },
+    "dependencies": {
+        "@socket.io/redis-adapter": "^8.2.1",
+        "bcryptjs": "^2.4.3",
+        "better-sqlite3": "^12.6.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-rate-limit": "^7.1.5",
+        "helmet": "^7.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1",
+        "pg": "^8.11.3",
+        "redis": "^4.6.12",
+        "sharp": "^0.33.2",
+        "socket.io": "^4.7.4",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.2"
+    }
+}
