@@ -12,4 +12,8 @@ export const userApi = {
         const res = await client.get<{ user: User }>('/users/me');
         return res.data.user;
     },
+    updateProfile: async (data: Partial<User>) => {
+        const res = await client.put<{ user: User }>('/users/me', data);
+        return res.data.user;
+    },
 };

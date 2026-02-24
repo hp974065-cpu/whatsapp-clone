@@ -45,6 +45,17 @@ export default function NewChatScreen({ navigation }: any) {
                 <FlatList
                     data={users || []}
                     keyExtractor={(item) => item.id}
+                    ListHeaderComponent={
+                        <TouchableOpacity
+                            className="flex-row items-center p-4 border-b border-wa-header"
+                            onPress={() => navigation.navigate('CreateGroup')}
+                        >
+                            <View className="w-12 h-12 bg-wa-green rounded-full items-center justify-center mr-4">
+                                <Text className="text-white text-xl">👥</Text>
+                            </View>
+                            <Text className="text-wa-text text-lg font-medium">New group</Text>
+                        </TouchableOpacity>
+                    }
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             className="flex-row items-center p-4 border-b border-wa-header active:bg-wa-hover"

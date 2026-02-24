@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, Alert } from 'react-native';
 import { useAuthStore } from '../../store/authStore';
 
-export default function SettingsScreen() {
+export default function SettingsScreen({ navigation }: any) {
     const { user, clearAuth } = useAuthStore();
 
     const handleLogout = () => {
@@ -25,7 +25,10 @@ export default function SettingsScreen() {
     return (
         <ScrollView className="flex-1 bg-wa-bg">
             {/* Profile Header */}
-            <TouchableOpacity className="flex-row items-center p-4 bg-wa-header mb-6">
+            <TouchableOpacity
+                className="flex-row items-center p-4 bg-wa-header mb-6"
+                onPress={() => navigation.navigate('Profile')}
+            >
                 <View className="w-16 h-16 bg-wa-hover rounded-full items-center justify-center mr-4">
                     {user?.avatar_url ? (
                         <Image

@@ -6,6 +6,10 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import OTPScreen from '../screens/auth/OTPScreen';
 import ConversationScreen from '../screens/main/ConversationScreen';
 import NewChatScreen from '../screens/main/NewChatScreen';
+import ProfileScreen from '../screens/main/ProfileScreen';
+import CreateGroupScreen from '../screens/main/CreateGroupScreen';
+import GroupFinalizeScreen from '../screens/main/GroupFinalizeScreen';
+import GroupInfoScreen from '../screens/main/GroupInfoScreen';
 import MainTabNavigator from './MainTabNavigator';
 import { ActivityIndicator, View } from 'react-native';
 
@@ -50,6 +54,46 @@ export default function RootNavigator() {
                                 headerStyle: { backgroundColor: '#2a3942' },
                                 headerTintColor: '#e9edef',
                                 title: 'New chat'
+                            }}
+                        />
+                        <Stack.Screen
+                            name="Profile"
+                            component={ProfileScreen}
+                            options={{
+                                headerShown: true,
+                                headerStyle: { backgroundColor: '#2a3942' },
+                                headerTintColor: '#e9edef',
+                                title: 'Profile'
+                            }}
+                        />
+                        <Stack.Screen
+                            name="CreateGroup"
+                            component={CreateGroupScreen}
+                            options={{
+                                headerShown: true,
+                                headerStyle: { backgroundColor: '#2a3942' },
+                                headerTintColor: '#e9edef',
+                                title: 'New group'
+                            }}
+                        />
+                        <Stack.Screen
+                            name="GroupFinalize"
+                            component={GroupFinalizeScreen}
+                            options={{
+                                headerShown: true,
+                                headerStyle: { backgroundColor: '#2a3942' },
+                                headerTintColor: '#e9edef',
+                                title: 'New group'
+                            }}
+                        />
+                        <Stack.Screen
+                            name="GroupInfo"
+                            component={GroupInfoScreen}
+                            options={{
+                                headerShown: true,
+                                headerStyle: { backgroundColor: '#2a3942' },
+                                headerTintColor: '#e9edef',
+                                title: 'Group info'
                             }}
                         />
                     </Stack.Group>

@@ -15,6 +15,7 @@ interface AuthState {
     user: User | null;
     isLoading: boolean;
     setAuth: (accessToken: string, refreshToken: string, user: User) => Promise<void>;
+    setUser: (user: User) => Promise<void>;
     clearAuth: () => Promise<void>;
     loadAuth: () => Promise<void>;
 }
@@ -35,6 +36,15 @@ export const useAuthStore = create<AuthState>((set) => ({
             set({ accessToken, refreshToken, user, isLoading: false });
         } catch (error) {
             console.error('Failed to save auth state:', error);
+        }
+    },
+
+    setUser: async (user) => {
+        try {
+            await SecureStore.setItemAsync('user', JSON.stringify(user));
+            set({ user });
+        } catch (error) {
+            console.error('Failed to save user state:', error);
         }
     },
 

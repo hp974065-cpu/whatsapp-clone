@@ -33,15 +33,26 @@ export default function ConversationScreen({ route, navigation }: any) {
 
         navigation.setOptions({
             headerTitle: () => (
-                <View>
+                <TouchableOpacity
+                    onPress={() => {
+                        // Only navigate if we have a conversationId (group)
+                        if (conversationId) {
+                            navigation.navigate('GroupInfo', {
+                                groupId: conversationId,
+                                groupName: otherUser?.display_name || 'Group',
+                                avatarUrl: otherUser?.avatar_url
+                            });
+                        }
+                    }}
+                >
                     <Text className="text-wa-text font-bold text-lg">{otherUser?.display_name || 'Chat'}</Text>
                     {statusText ? (
                         <Text className="text-wa-green text-xs font-medium">{statusText}</Text>
                     ) : null}
-                </View>
+                </TouchableOpacity>
             )
         });
-    }, [otherUser, presence, isOtherTyping]);
+    }, [otherUser, presence, isOtherTyping, conversationId]);
 
     useEffect(() => {
         if (!socket) return;
