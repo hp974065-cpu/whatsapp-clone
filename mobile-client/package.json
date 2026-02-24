@@ -45,7 +45,8 @@
     "typescript": "~5.9.2"
   },
   "private": true,
+  "type": "commonjs",
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   }
 }
